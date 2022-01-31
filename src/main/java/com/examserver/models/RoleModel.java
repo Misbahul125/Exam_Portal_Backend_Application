@@ -10,6 +10,7 @@ public class RoleModel {
 
     @Id
     private Long roleId;
+
     private String roleName;
 
     //a single role can be alloted to many user
