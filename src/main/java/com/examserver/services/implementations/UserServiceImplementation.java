@@ -54,4 +54,11 @@ public class UserServiceImplementation implements UserService {
 
     }
 
+    //deleting user by userId
+    @Override
+    public void deleteUserByUserId(Long userId) {
+
+        this.userRepository.deleteById(userId);
+
+    }
 }

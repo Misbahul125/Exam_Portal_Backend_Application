@@ -13,4 +13,7 @@ public interface UserService {
     //fetch user details by username
     public UserModel getUserByUsername(String username);
 
+    //delete user by userId
+    public void deleteUserByUserId(Long userId);
+
 }
