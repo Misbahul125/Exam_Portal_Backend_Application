@@ -27,6 +27,7 @@ public class ExamserverApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Starting execution...");
 
+		/*statically creating user from this main class
 		UserModel userModel = new UserModel();
 		userModel.setFirstName("Misbahul");
 		userModel.setLastName("Haque");
@@ -49,6 +50,6 @@ public class ExamserverApplication implements CommandLineRunner {
 
 		//UserModel user1 = this.userService.createUser(userModel , userRoleModels);
 
-		System.out.println((this.userService.createUser(userModel , userRoleModels)).toString());
+		System.out.println((this.userService.createUser(userModel , userRoleModels)).toString());*/
 	}
 }
