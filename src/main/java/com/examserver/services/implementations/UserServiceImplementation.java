@@ -43,5 +43,15 @@ public class UserServiceImplementation implements UserService {
         }
 
         return local;
+
     }
+
+    //fetching user details
+    @Override
+    public UserModel getUserByUsername(String username) {
+
+        return this.userRepository.findByUserName(username);
+
+    }
+
 }

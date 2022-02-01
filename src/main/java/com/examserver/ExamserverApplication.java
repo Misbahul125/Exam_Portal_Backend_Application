@@ -25,7 +25,7 @@ public class ExamserverApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Starting execution...");
+		System.out.println("Starting backend spring application...");
 
 		/*statically creating user from this main class
 		UserModel userModel = new UserModel();

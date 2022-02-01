@@ -5,10 +5,7 @@ import com.examserver.models.UserModel;
 import com.examserver.models.UserRoleModel;
 import com.examserver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +34,13 @@ public class UserController {
 
         return this.userService.createUser(userModel , userRoleModelSet);
 
+    }
+
+    //function to fetch user details by username
+    @GetMapping("/{username}")
+    public UserModel getUserByUsername(@PathVariable("username") String username) {
+
+        return this.userService.getUserByUsername(username);
 
     }
 
