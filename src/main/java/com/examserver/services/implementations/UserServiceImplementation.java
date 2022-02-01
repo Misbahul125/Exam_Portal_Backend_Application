@@ -54,6 +54,17 @@ public class UserServiceImplementation implements UserService {
 
     }
 
+    //updating user details
+    @Override
+    public UserModel updateUser(UserModel userModel) {
+        this.userRepository.findById(userModel.getUserId());
+
+        /* for statically update and checking purpose
+        userModel.setEnabled(false); */
+
+        return this.userRepository.save(userModel);
+    }
+
     //deleting user by userId
     @Override
     public void deleteUserByUserId(Long userId) {

@@ -18,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     //function to create user
-    @PostMapping("/")
+    @PostMapping("/create_user")
     public UserModel createUser(@RequestBody UserModel userModel) throws Exception {
 
         RoleModel roleModel = new RoleModel();
@@ -37,17 +37,27 @@ public class UserController {
     }
 
     //function to fetch user details by username
-    @GetMapping("/{username}")
+    @GetMapping("/get_user/{username}")
     public UserModel getUserByUsername(@PathVariable("username") String username) {
 
         return this.userService.getUserByUsername(username);
 
     }
 
+    //function to update the user as a whole
+    @PutMapping("/update_user")
+    public UserModel updateUser(@RequestBody UserModel userModel) {
+
+        return this.userService.updateUser(userModel);
+
+    }
+
     //function to delete user by userId
-    @DeleteMapping("/{userID}")
+    @DeleteMapping("/delete_user/{userID}")
     public void deleteUserByUserId(@PathVariable("userID") Long userId) {
+
         this.userService.deleteUserByUserId(userId);
+
     }
 
 }
