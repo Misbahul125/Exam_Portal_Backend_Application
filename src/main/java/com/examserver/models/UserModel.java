@@ -1,14 +1,17 @@
 package com.examserver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class UserModel {
+public class UserModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,8 +63,40 @@ public class UserModel {
         this.userName = userName;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        Set<Authority> authoritySet = new HashSet<>();
+
+        this.userRoles.forEach(userRoleModel -> {
+            authoritySet.add(new Authority(userRoleModel.getRole().getRoleName()));
+        });
+
+        return null;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
     }
 
     public void setPassword(String password) {
@@ -123,4 +158,6 @@ public class UserModel {
     public void setUserRoles(Set<UserRoleModel> userRoles) {
         this.userRoles = userRoles;
     }
+
+
 }
