@@ -2,7 +2,7 @@ package com.examserver.models;
 
 public class JWTResponse {
 
-    private String token;
+    String token;
 
     public JWTResponse() {
     }
