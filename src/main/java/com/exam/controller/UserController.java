@@ -12,6 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -22,6 +23,8 @@ public class UserController {
     public User createUser(
             @RequestBody User user
     ) throws Exception {
+
+        user.setProfileImage("default.png");
 
         Set<UserRole> userRoles = new HashSet<>();
 
