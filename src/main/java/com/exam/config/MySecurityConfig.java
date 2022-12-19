@@ -66,8 +66,8 @@ public class MySecurityConfig  {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     public DaoAuthenticationProvider daoAuthenticationProvider() {
