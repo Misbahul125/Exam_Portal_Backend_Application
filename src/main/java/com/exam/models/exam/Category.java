@@ -16,6 +16,7 @@ public class Category {
 
     private String description;
 
+    //don't use fetchType=EAGER here
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Quiz> quizzes = new LinkedHashSet<>();
