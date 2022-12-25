@@ -151,5 +151,4 @@ public class User implements UserDetails {
         this.userRoles = userRoles;
     }
 
-
 }

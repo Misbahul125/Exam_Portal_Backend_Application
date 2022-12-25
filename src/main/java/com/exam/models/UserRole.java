@@ -1,6 +1,5 @@
 package com.exam.models;
 
-
 import jakarta.persistence.*;
 
 @Entity

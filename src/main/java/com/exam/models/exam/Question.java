@@ -21,6 +21,9 @@ public class Question {
 
     private String answer;
 
+    @Transient
+    private String answerOfUser;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 
@@ -97,5 +100,13 @@ public class Question {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
+    }
+
+    public String getAnswerOfUser() {
+        return answerOfUser;
+    }
+
+    public void setAnswerOfUser(String answerOfUser) {
+        this.answerOfUser = answerOfUser;
     }
 }

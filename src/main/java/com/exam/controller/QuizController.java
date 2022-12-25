@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/quiz")
 public class QuizController {
+
     @Autowired
     private QuizService quizService;
 
@@ -23,7 +24,6 @@ public class QuizController {
     }
 
     //update quiz
-
     @PutMapping("/")
     public ResponseEntity<Quiz> updateQuiz(@RequestBody Quiz quiz) {
         return ResponseEntity.ok(this.quizService.updateQuiz(quiz));
@@ -67,6 +67,5 @@ public class QuizController {
         category.setCid(cid);
         return this.quizService.getActiveQuizzesOfCategory(category);
     }
-
 
 }

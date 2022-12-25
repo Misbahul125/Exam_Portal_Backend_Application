@@ -31,17 +31,12 @@ public class AuthenticateController {
     @Autowired
     private JwtUtils jwtUtils;
 
-
     //generate token
-
     @PostMapping("/generate-token")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 
         try {
-
             authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
-
-
         } catch (UserNotFoundException e) {
             e.printStackTrace();
             throw new Exception("User not found ");
@@ -52,7 +47,6 @@ public class AuthenticateController {
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
         String token = this.jwtUtils.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
-
 
     }
 
@@ -74,9 +68,6 @@ public class AuthenticateController {
     @GetMapping("/current-user")
     public User getCurrentUser(Principal principal) {
         return ((User) this.userDetailsService.loadUserByUsername(principal.getName()));
-
     }
-
-
 
 }

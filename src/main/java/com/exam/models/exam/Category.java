@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "category")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cid;
