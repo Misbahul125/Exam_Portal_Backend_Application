@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -75,18 +76,20 @@ public class QuestionController {
     @PostMapping("/evaluate-quiz")
     public ResponseEntity<?> evaluateQuiz(@RequestBody List<Question> questionList) {
 
-        int marksObtained = 0, correctAnswers = 0, questionsAttempted = 0;
-        double singleQuestionMark;
+        int correctAnswers = 0, questionsAttempted = 0;
+        double marksObtained = 0, singleQuestionMark;
 
         singleQuestionMark = Double.parseDouble(questionList.get(0).getQuiz().getMaxMarks()) / questionList.size();
 
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
         for(Question question : questionList)
         {
-            this.questionService.getQuestionByQuestionId(question.getQuesId());
+            Question originalQuestion = this.questionService.getQuestionByQuestionId(question.getQuesId());
 
             if((question.getAnswerOfUser() != null) &&
                     (!question.getAnswerOfUser().isEmpty()) &&
-                    (question.getAnswer().equals(question.getAnswerOfUser().trim()))
+                    (originalQuestion.getAnswer().equals(question.getAnswerOfUser().trim()))
             ) {
                 correctAnswers++;
                 marksObtained += singleQuestionMark;
@@ -97,7 +100,9 @@ public class QuestionController {
             }
         }
 
-        TestReport testReport = new TestReport(marksObtained, correctAnswers, questionsAttempted);
+        String marksObtainedStr = decimalFormat.format(marksObtained);
+
+        TestReport testReport = new TestReport(Double.parseDouble(marksObtainedStr), correctAnswers, questionsAttempted);
 
         return ResponseEntity.ok(testReport);
     }

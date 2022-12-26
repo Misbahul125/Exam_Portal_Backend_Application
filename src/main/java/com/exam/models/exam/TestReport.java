@@ -2,20 +2,20 @@ package com.exam.models.exam;
 
 public class TestReport {
 
-    int marksObtained = 0;
+    double marksObtained = 0;
     int correctAnswers = 0;
     int questionsAttempted = 0;
 
     public TestReport() {
     }
 
-    public TestReport(int marksObtained, int correctAnswers, int questionsAttempted) {
+    public TestReport(double marksObtained, int correctAnswers, int questionsAttempted) {
         this.marksObtained = marksObtained;
         this.correctAnswers = correctAnswers;
         this.questionsAttempted = questionsAttempted;
     }
 
-    public int getMarksObtained() {
+    public double getMarksObtained() {
         return marksObtained;
     }
 
